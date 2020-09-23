@@ -16,5 +16,10 @@ namespace DistanceConverter
         {
             return feet * ratio;
         }
+
+        public static double FromInchToMeter(double inch)
+        {
+            return inch * 0.0254;
+        }
     }
 }
