@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace SalesCalculator
@@ -34,16 +33,31 @@ namespace SalesCalculator
 
         public IDictionary<string, int> GetPerStoreSales()
         {
-            var dict = new Dictionary<string, int>();
+            var dictStore = new Dictionary<string, int>();
 
             foreach (var sale in _sales)
             {
-                if (dict.ContainsKey(sale.ShopName))
-                    dict[sale.ShopName] += sale.Amount;
+                if (dictStore.ContainsKey(sale.ShopName))
+                    dictStore[sale.ShopName] += sale.Amount;
                 else
-                    dict[sale.ShopName] = sale.Amount;
+                    dictStore[sale.ShopName] = sale.Amount;
             }
-            return dict;
+            return dictStore;
+        }
+
+        // Exercise 2.3
+        public IDictionary<string, int> GetPerCategorySales()
+        {
+            var dictCategory = new Dictionary<string, int>();
+
+            foreach (var sale in _sales)
+            {
+                if (dictCategory.ContainsKey(sale.ProductCategory))
+                    dictCategory[sale.ProductCategory] += sale.Amount;
+                else
+                    dictCategory[sale.ProductCategory] = sale.Amount;
+            }
+            return dictCategory;
         }
 
     }
